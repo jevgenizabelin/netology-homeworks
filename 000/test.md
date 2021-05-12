@@ -20,4 +20,8 @@ for param in "$*"; do
 done
 ```
 6. Это ссылка на мой [репозиторий](https://github.com/jevgenizabelin/netology-homeworks.git)
-
+7. Списки
+* **Один**
+* *Два*
+* ***Три***
+ 
