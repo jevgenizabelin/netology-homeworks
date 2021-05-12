@@ -1,0 +1,8 @@
+5. Преоброзавываем из json в нормальный формат:
+cat netology.pem | jq -r .certificate > netology.example.com.crt.pem
+cat netology.pem | jq -r .issuingCa >> netology.example.com.crt.pem
+cat netology.pem | jq -r .privateKey > netology.example.com.crt.key
+
+7. Let's encrypt испульзуем на работе. Так что знаком.
+
+8. С дополнительным заданием разобрался. Сертификат для nginx генерится каждые 2 минуты.

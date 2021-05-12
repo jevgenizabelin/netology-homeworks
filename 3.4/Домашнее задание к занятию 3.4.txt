@@ -1,0 +1,23 @@
+2. node_cpu_seconds_total
+node_memory_MemFree_bytes
+node_memory_SwapFree_bytes
+node_disk_read_bytes_total
+node_disk_read_time_seconds_total
+node_disk_reads_completed_total
+node_disk_write_time_seconds_total
+node_disk_writes_completed_total
+node_filesystem_avail_bytes
+node_filesystem_free_bytes
+node_filesystem_files_free
+node_filesystem_files
+node_filesystem_size_bytes
+node_disk_io_now
+node_network_up
+node_network_receive_bytes_total
+node_network_transmit_bytes_total
+node_network_speed_bytes
+
+5. fs.nr_open - ограничение на количество открытых файлов на процесс
+
+7. :(){ :|:& };: - определяет функцию с именем : , которая вызывает себя дважды в фоновом режиме и функция : запускается.
+Ограничить колличество процессов пользователя можно до перезгарузки ulimit -u <число процессов> или постоянно в файле /etc/security/limits.conf

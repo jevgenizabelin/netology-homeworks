@@ -1,0 +1,9 @@
+Key                  Value
+---                  -----
+token                s.eYYS7O8AMKWbzCDfYjeD6TxD
+token_accessor       t132GjbYZ1FuOmVRYsq3l3ZY
+token_duration       24h
+token_renewable      true
+token_policies       ["default" "pki_int"]
+identity_policies    []
+policies             ["default" "pki_int"]
