@@ -1,0 +1,74 @@
+HTTP/1.1 301 Moved Permanently
+Location: http://www.google.com/
+Content-Type: text/html; charset=UTF-8
+Date: Sat, 15 May 2021 17:01:37 GMT
+Expires: Mon, 14 Jun 2021 17:01:37 GMT
+Cache-Control: public, max-age=2592000
+Server: gws
+Content-Length: 219
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+
+HTTP/1.1 301 Moved Permanently
+Location: http://www.google.com/
+Content-Type: text/html; charset=UTF-8
+Date: Sat, 15 May 2021 17:01:37 GMT
+Expires: Mon, 14 Jun 2021 17:01:37 GMT
+Cache-Control: public, max-age=2592000
+Server: gws
+Content-Length: 219
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+
+HTTP/1.1 301 Moved Permanently
+Location: http://www.google.com/
+Content-Type: text/html; charset=UTF-8
+Date: Sat, 15 May 2021 17:01:37 GMT
+Expires: Mon, 14 Jun 2021 17:01:37 GMT
+Cache-Control: public, max-age=2592000
+Server: gws
+Content-Length: 219
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+
+HTTP/1.1 301 Moved Permanently
+Location: http://www.google.com/
+Content-Type: text/html; charset=UTF-8
+Date: Sat, 15 May 2021 17:01:37 GMT
+Expires: Mon, 14 Jun 2021 17:01:37 GMT
+Cache-Control: public, max-age=2592000
+Server: gws
+Content-Length: 219
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+
+HTTP/1.1 301 Moved Permanently
+Location: http://www.google.com/
+Content-Type: text/html; charset=UTF-8
+Date: Sat, 15 May 2021 17:01:37 GMT
+Expires: Mon, 14 Jun 2021 17:01:37 GMT
+Cache-Control: public, max-age=2592000
+Server: gws
+Content-Length: 219
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+
+HTTP/1.1 406 Not acceptable
+Connection: Close
+Content-Length: 0
+
+HTTP/1.1 406 Not acceptable
+Connection: Close
+Content-Length: 0
+
+HTTP/1.1 406 Not acceptable
+Connection: Close
+Content-Length: 0
+
+HTTP/1.1 406 Not acceptable
+Connection: Close
+Content-Length: 0
+
+HTTP/1.1 406 Not acceptable
+Connection: Close
+Content-Length: 0
