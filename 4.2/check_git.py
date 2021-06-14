@@ -3,7 +3,7 @@
 import os, sys
 
 repo_dir = sys.argv[1]
-bash_command = ["cd" + " " + repo_dir, "git status"]
+bash_command = ["cd" + " " + repo_dir, "git status 2> /dev/null"]
 result_os = os.popen(' && '.join(bash_command)).read()
 for result in result_os.split('\n'):
     if os.path.exists(repo_dir + '.git') == False:
