@@ -1,0 +1,14 @@
+version: '2.3'
+
+volumes:
+  pg_data1:
+  pg_backup:
+
+services:
+  pg_db1:
+    image: postgres:12
+    restart: always
+
+    volumes:
+      - pg_data1:/var/lib/postgresql
+      - pg_backup:/backup
