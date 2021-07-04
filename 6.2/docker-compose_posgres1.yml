@@ -12,3 +12,6 @@ services:
     volumes:
       - pg_data1:/var/lib/postgresql
       - pg_backup:/backup
+
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
