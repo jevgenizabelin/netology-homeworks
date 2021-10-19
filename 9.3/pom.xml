@@ -9,7 +9,7 @@
     <repository>
       <id>my-repo</id>
       <name>maven-public</name>
-      <url>http://localhost:8081/repository/maven-public/</url>
+      <url>http://192.168.1.19:8081/repository/maven-public/</url>
     </repository>
   </repositories>
   <dependencies>
