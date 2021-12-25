@@ -1,3 +1,4 @@
+version: "3.3"
 volumes:
   data:
   prometheus-data:
@@ -34,7 +35,6 @@ services:
       /usr/bin/mc policy set download storage/${Storage_Bucket:-data} &&
       exit 0;
       "
-
   uploader:
     build: ./uploader
     depends_on:

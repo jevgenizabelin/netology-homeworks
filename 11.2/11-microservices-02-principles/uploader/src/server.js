@@ -50,7 +50,6 @@ app.post('/v1/upload', (request, response) => {
         var buf = Buffer.concat(bufs);
 
         const fileType = await FileType.fromBuffer(buf);
-        console.log(`Detected file type: ${fileType.mime}`);
 
         if(!fileType) {
             console.warn(`Failed to detect file mime type`);
@@ -64,7 +63,7 @@ app.post('/v1/upload', (request, response) => {
 
         const id = uuidv4();
         const filename =  `${id}.${fileType.ext}`;
-        
+        console.log(`Detected file type: ${fileType.mime}`);
         client.putObject(S3_BUCKET, filename, buf, function (err, objInfo) {
             if (err) {
                 console.error(`Failed to save file due to error ${err}`);
