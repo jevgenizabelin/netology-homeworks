@@ -1,0 +1,63 @@
+version: "3.3"
+services:
+  redis_1:
+    image: redis
+    ports:
+      - "7001:7001"
+      - "7011:7011"    
+    volumes:
+      - ./config/redis_1.tmpl:/usr/local/etc/redis/redis_1.conf
+      - ./config/redis_11.tmpl:/usr/local/etc/redis/redis_11.conf
+    command: >
+      bash -c "redis-server /usr/local/etc/redis/redis_1.conf
+      & redis-server /usr/local/etc/redis/redis_11.conf"
+    networks:
+      redis_net:
+        ipv4_address: 10.10.10.11  
+  redis_2:
+    image: redis
+    ports:
+      - "7002:7002"
+      - "7012:7012" 
+    volumes:
+      - ./config/redis_2.tmpl:/usr/local/etc/redis/redis_2.conf
+      - ./config/redis_12.tmpl:/usr/local/etc/redis/redis_12.conf
+    command: >
+      bash -c "redis-server /usr/local/etc/redis/redis_2.conf
+      & redis-server /usr/local/etc/redis/redis_12.conf"
+    networks:
+      redis_net:
+        ipv4_address: 10.10.10.12      
+  redis_3:
+    image: redis
+    ports:
+      - "7003:7003"
+      - "7013:7013"    
+    volumes:
+      - ./config/redis_3.tmpl:/usr/local/etc/redis/redis_3.conf
+      - ./config/redis_13.tmpl:/usr/local/etc/redis/redis_13.conf
+    command: >
+      bash -c "redis-server /usr/local/etc/redis/redis_3.conf
+      & redis-server /usr/local/etc/redis/redis_13.conf"
+    networks:
+      redis_net:
+        ipv4_address: 10.10.10.13    
+  redis_cluster_init:
+    image: redis
+    volumes:
+      - ./config/entrypoint.sh:/tmp/entrypoint.sh
+    entrypoint: sh -c "/tmp/entrypoint.sh"
+    networks:
+      redis_net:
+        ipv4_address: 10.10.10.14
+    depends_on:
+      - redis_1
+      - redis_2
+      - redis_3
+networks:
+  redis_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24
