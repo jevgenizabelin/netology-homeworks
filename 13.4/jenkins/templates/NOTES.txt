@@ -1,0 +1,1 @@
+Pod {{ .Chart.Name }}-{{ .Chart.AppVersion }} Deploed in {{ .Values.namespace }} namespace.

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- toYaml .Values.labels.jenkins | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount.jenkins }}
+  selector:
+    matchLabels:
+      {{- toYaml .Values.labels.jenkins | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- toYaml .Values.labels.jenkins | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.jenkins.repository }}:{{ .Values.image.jenkins.tag }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: {{ .Values.endpoint.jenkins }}
+              protocol: TCP
+

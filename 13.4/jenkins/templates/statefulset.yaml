@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Chart.Name }}-db
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- toYaml .Values.labels.db | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount.db }}
+  selector:
+    matchLabels:
+      {{- toYaml .Values.labels.db | nindent 6 }}
+  serviceName: {{ .Chart.Name }}-db
+  template:
+    metadata:
+      labels:
+        {{- toYaml .Values.labels.db | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-db
+          image: "{{ .Values.image.db.repository }}:{{ .Values.image.db.tag }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: psql
+              containerPort: {{ .Values.endpoint.db }}
+              protocol: TCP
+          env:
+            {{- toYaml .Values.env.db | nindent 12 }}

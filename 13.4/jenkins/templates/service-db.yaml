@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}-db
+  labels:
+    {{- toYaml .Values.labels.db | nindent 4 }}
+spec:
+  type: {{ .Values.service.db.type }}
+  ports:
+    - port: {{ .Values.service.db.port }}
+      targetPort: {{ .Values.endpoint.db }}
+      protocol: TCP
+      name: psql
+  selector:
+    {{- toYaml .Values.labels.db | nindent 4 }}

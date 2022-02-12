@@ -1,0 +1,44 @@
+namespace: app1
+
+replicaCount:
+  jenkins: 1
+  db: 1
+
+image:
+  jenkins:
+    repository: jay15/jenkins_ubuntu
+    tag: "ver2"
+
+  db:
+    repository: postgres
+    tag: "13-alpine"
+
+env:
+  db:
+    - name: POSTGRES_PASSWORD
+      value: postgres
+    - name: POSTGRES_USER
+      value: postgres
+    - name: POSTGRES_DB
+      value: news
+
+
+service:
+  jenkins:
+    port: 8080
+    type: ClusterIP
+  db:
+    port: 5432
+    type: ClusterIP
+
+endpoint: 
+  jenkins: 8080
+  db: 5432
+    
+labels:
+  jenkins:
+    type: ci
+    app: jenkins
+  db: 
+    type: storage
+    app: db
