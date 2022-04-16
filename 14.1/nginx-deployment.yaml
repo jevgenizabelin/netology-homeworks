@@ -1,0 +1,73 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-tls
+  namespace: default
+  labels:
+    app: mysite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysite
+  template:
+    metadata:
+      labels:
+        app: mysite
+    spec:
+      containers:
+      - name: nginx-mysite
+        image: nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        - containerPort: 443
+          protocol: TCP
+        volumeMounts:
+        - name: certs
+          mountPath: "/etc/nginx/ssl"
+          readOnly: true
+        - name: config
+          mountPath: "/etc/nginx/conf.d"
+          readOnly: true
+        - name: index
+          mountPath: /var/www/html
+          readOnly: true
+
+      volumes:
+      - name: certs
+        secret:
+          secretName: mysite-cert
+      - name: config
+        configMap:
+          name: nginx-config
+          items:
+            - key: default.conf
+              path: default.conf
+      - name: index
+        configMap:
+          name: nginx-config
+          items:
+            - key: index.html
+              path: index.html
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-mysite
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: https
+      port: 443
+      targetPort: 443
+  selector:
+    app: nginx-mysite
