@@ -1,0 +1,52 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault
+spec:
+  selector:
+    matchLabels:
+      app: vault
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: vault
+    spec:
+      containers:
+      - name: vault
+        image: vault
+        ports:
+        - containerPort: 8200
+          protocol: TCP
+        env:
+        - name: VAULT_DEV_ROOT_TOKEN_ID
+          value: "aiphohTaa0eeHei"
+        - name: VAULT_DEV_LISTEN_ADDRESS
+          value: 0.0.0.0:8200
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault
+spec:
+  type: ClusterIP
+  ports:
+    - name: vault-web
+      port: 8200
+      targetPort: 8200
+  selector:
+    app: vault
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: secret-hvac
+data:
+  VAULT_URL: 'http://vault:8200'
+  VAULT_TOKEN: 'aiphohTaa0eeHei'
+  VAULT_PATCH: 'google'
+  VAULT_KEY: 'OK'
+  VAULT_VALUE: 'GOOGLE'

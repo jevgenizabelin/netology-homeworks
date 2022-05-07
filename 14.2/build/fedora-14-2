@@ -1,0 +1,8 @@
+FROM fedora:latest
+RUN dnf -y install pip jq
+RUN pip install -q hvac
+COPY ./secret /secret
+RUN chmod +x /secret/secret-hvac.py
+EXPOSE 8200
+CMD ["python3", "/secret/secret-hvac.py"]
+

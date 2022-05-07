@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-secret-hvac
+  name: test-secret-hvac
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-secret-hvac
+  template:
+    metadata:
+      labels:
+        app: test-secret-hvac
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - image: jay15/fedora-hvac:latest
+        imagePullPolicy: IfNotPresent
+        name: test-secret-hvac
+        envFrom:
+        - configMapRef:
+            name: secret-hvac
